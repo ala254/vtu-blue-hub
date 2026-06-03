@@ -13,8 +13,18 @@ import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedReferralsRouteImport } from './routes/_authenticated/referrals'
+import { Route as AuthenticatedProfileRouteImport } from './routes/_authenticated/profile'
 import { Route as AuthenticatedHomeRouteImport } from './routes/_authenticated/home'
+import { Route as AuthenticatedHistoryRouteImport } from './routes/_authenticated/history'
+import { Route as AuthenticatedFundRouteImport } from './routes/_authenticated/fund'
 import { Route as ApiPublicPaystackWebhookRouteImport } from './routes/api/public/paystack-webhook'
+import { Route as AuthenticatedServicesExamPinRouteImport } from './routes/_authenticated/services/exam-pin'
+import { Route as AuthenticatedServicesElectricityRouteImport } from './routes/_authenticated/services/electricity'
+import { Route as AuthenticatedServicesDataRouteImport } from './routes/_authenticated/services/data'
+import { Route as AuthenticatedServicesCableRouteImport } from './routes/_authenticated/services/cable'
+import { Route as AuthenticatedServicesBettingRouteImport } from './routes/_authenticated/services/betting'
+import { Route as AuthenticatedServicesAirtimeRouteImport } from './routes/_authenticated/services/airtime'
 
 const ResetPasswordRoute = ResetPasswordRouteImport.update({
   id: '/reset-password',
@@ -35,9 +45,29 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedReferralsRoute = AuthenticatedReferralsRouteImport.update({
+  id: '/referrals',
+  path: '/referrals',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedProfileRoute = AuthenticatedProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedHomeRoute = AuthenticatedHomeRouteImport.update({
   id: '/home',
   path: '/home',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedHistoryRoute = AuthenticatedHistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedFundRoute = AuthenticatedFundRouteImport.update({
+  id: '/fund',
+  path: '/fund',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const ApiPublicPaystackWebhookRoute =
@@ -46,19 +76,75 @@ const ApiPublicPaystackWebhookRoute =
     path: '/api/public/paystack-webhook',
     getParentRoute: () => rootRouteImport,
   } as any)
+const AuthenticatedServicesExamPinRoute =
+  AuthenticatedServicesExamPinRouteImport.update({
+    id: '/services/exam-pin',
+    path: '/services/exam-pin',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedServicesElectricityRoute =
+  AuthenticatedServicesElectricityRouteImport.update({
+    id: '/services/electricity',
+    path: '/services/electricity',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedServicesDataRoute =
+  AuthenticatedServicesDataRouteImport.update({
+    id: '/services/data',
+    path: '/services/data',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedServicesCableRoute =
+  AuthenticatedServicesCableRouteImport.update({
+    id: '/services/cable',
+    path: '/services/cable',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedServicesBettingRoute =
+  AuthenticatedServicesBettingRouteImport.update({
+    id: '/services/betting',
+    path: '/services/betting',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedServicesAirtimeRoute =
+  AuthenticatedServicesAirtimeRouteImport.update({
+    id: '/services/airtime',
+    path: '/services/airtime',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/fund': typeof AuthenticatedFundRoute
+  '/history': typeof AuthenticatedHistoryRoute
   '/home': typeof AuthenticatedHomeRoute
+  '/profile': typeof AuthenticatedProfileRoute
+  '/referrals': typeof AuthenticatedReferralsRoute
+  '/services/airtime': typeof AuthenticatedServicesAirtimeRoute
+  '/services/betting': typeof AuthenticatedServicesBettingRoute
+  '/services/cable': typeof AuthenticatedServicesCableRoute
+  '/services/data': typeof AuthenticatedServicesDataRoute
+  '/services/electricity': typeof AuthenticatedServicesElectricityRoute
+  '/services/exam-pin': typeof AuthenticatedServicesExamPinRoute
   '/api/public/paystack-webhook': typeof ApiPublicPaystackWebhookRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/fund': typeof AuthenticatedFundRoute
+  '/history': typeof AuthenticatedHistoryRoute
   '/home': typeof AuthenticatedHomeRoute
+  '/profile': typeof AuthenticatedProfileRoute
+  '/referrals': typeof AuthenticatedReferralsRoute
+  '/services/airtime': typeof AuthenticatedServicesAirtimeRoute
+  '/services/betting': typeof AuthenticatedServicesBettingRoute
+  '/services/cable': typeof AuthenticatedServicesCableRoute
+  '/services/data': typeof AuthenticatedServicesDataRoute
+  '/services/electricity': typeof AuthenticatedServicesElectricityRoute
+  '/services/exam-pin': typeof AuthenticatedServicesExamPinRoute
   '/api/public/paystack-webhook': typeof ApiPublicPaystackWebhookRoute
 }
 export interface FileRoutesById {
@@ -67,7 +153,17 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/_authenticated/fund': typeof AuthenticatedFundRoute
+  '/_authenticated/history': typeof AuthenticatedHistoryRoute
   '/_authenticated/home': typeof AuthenticatedHomeRoute
+  '/_authenticated/profile': typeof AuthenticatedProfileRoute
+  '/_authenticated/referrals': typeof AuthenticatedReferralsRoute
+  '/_authenticated/services/airtime': typeof AuthenticatedServicesAirtimeRoute
+  '/_authenticated/services/betting': typeof AuthenticatedServicesBettingRoute
+  '/_authenticated/services/cable': typeof AuthenticatedServicesCableRoute
+  '/_authenticated/services/data': typeof AuthenticatedServicesDataRoute
+  '/_authenticated/services/electricity': typeof AuthenticatedServicesElectricityRoute
+  '/_authenticated/services/exam-pin': typeof AuthenticatedServicesExamPinRoute
   '/api/public/paystack-webhook': typeof ApiPublicPaystackWebhookRoute
 }
 export interface FileRouteTypes {
@@ -76,14 +172,34 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/reset-password'
+    | '/fund'
+    | '/history'
     | '/home'
+    | '/profile'
+    | '/referrals'
+    | '/services/airtime'
+    | '/services/betting'
+    | '/services/cable'
+    | '/services/data'
+    | '/services/electricity'
+    | '/services/exam-pin'
     | '/api/public/paystack-webhook'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/auth'
     | '/reset-password'
+    | '/fund'
+    | '/history'
     | '/home'
+    | '/profile'
+    | '/referrals'
+    | '/services/airtime'
+    | '/services/betting'
+    | '/services/cable'
+    | '/services/data'
+    | '/services/electricity'
+    | '/services/exam-pin'
     | '/api/public/paystack-webhook'
   id:
     | '__root__'
@@ -91,7 +207,17 @@ export interface FileRouteTypes {
     | '/_authenticated'
     | '/auth'
     | '/reset-password'
+    | '/_authenticated/fund'
+    | '/_authenticated/history'
     | '/_authenticated/home'
+    | '/_authenticated/profile'
+    | '/_authenticated/referrals'
+    | '/_authenticated/services/airtime'
+    | '/_authenticated/services/betting'
+    | '/_authenticated/services/cable'
+    | '/_authenticated/services/data'
+    | '/_authenticated/services/electricity'
+    | '/_authenticated/services/exam-pin'
     | '/api/public/paystack-webhook'
   fileRoutesById: FileRoutesById
 }
@@ -133,11 +259,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/referrals': {
+      id: '/_authenticated/referrals'
+      path: '/referrals'
+      fullPath: '/referrals'
+      preLoaderRoute: typeof AuthenticatedReferralsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/profile': {
+      id: '/_authenticated/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof AuthenticatedProfileRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/home': {
       id: '/_authenticated/home'
       path: '/home'
       fullPath: '/home'
       preLoaderRoute: typeof AuthenticatedHomeRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/history': {
+      id: '/_authenticated/history'
+      path: '/history'
+      fullPath: '/history'
+      preLoaderRoute: typeof AuthenticatedHistoryRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/fund': {
+      id: '/_authenticated/fund'
+      path: '/fund'
+      fullPath: '/fund'
+      preLoaderRoute: typeof AuthenticatedFundRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/api/public/paystack-webhook': {
@@ -147,15 +301,77 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiPublicPaystackWebhookRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/services/exam-pin': {
+      id: '/_authenticated/services/exam-pin'
+      path: '/services/exam-pin'
+      fullPath: '/services/exam-pin'
+      preLoaderRoute: typeof AuthenticatedServicesExamPinRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/services/electricity': {
+      id: '/_authenticated/services/electricity'
+      path: '/services/electricity'
+      fullPath: '/services/electricity'
+      preLoaderRoute: typeof AuthenticatedServicesElectricityRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/services/data': {
+      id: '/_authenticated/services/data'
+      path: '/services/data'
+      fullPath: '/services/data'
+      preLoaderRoute: typeof AuthenticatedServicesDataRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/services/cable': {
+      id: '/_authenticated/services/cable'
+      path: '/services/cable'
+      fullPath: '/services/cable'
+      preLoaderRoute: typeof AuthenticatedServicesCableRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/services/betting': {
+      id: '/_authenticated/services/betting'
+      path: '/services/betting'
+      fullPath: '/services/betting'
+      preLoaderRoute: typeof AuthenticatedServicesBettingRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/services/airtime': {
+      id: '/_authenticated/services/airtime'
+      path: '/services/airtime'
+      fullPath: '/services/airtime'
+      preLoaderRoute: typeof AuthenticatedServicesAirtimeRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
 interface AuthenticatedRouteRouteChildren {
+  AuthenticatedFundRoute: typeof AuthenticatedFundRoute
+  AuthenticatedHistoryRoute: typeof AuthenticatedHistoryRoute
   AuthenticatedHomeRoute: typeof AuthenticatedHomeRoute
+  AuthenticatedProfileRoute: typeof AuthenticatedProfileRoute
+  AuthenticatedReferralsRoute: typeof AuthenticatedReferralsRoute
+  AuthenticatedServicesAirtimeRoute: typeof AuthenticatedServicesAirtimeRoute
+  AuthenticatedServicesBettingRoute: typeof AuthenticatedServicesBettingRoute
+  AuthenticatedServicesCableRoute: typeof AuthenticatedServicesCableRoute
+  AuthenticatedServicesDataRoute: typeof AuthenticatedServicesDataRoute
+  AuthenticatedServicesElectricityRoute: typeof AuthenticatedServicesElectricityRoute
+  AuthenticatedServicesExamPinRoute: typeof AuthenticatedServicesExamPinRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedFundRoute: AuthenticatedFundRoute,
+  AuthenticatedHistoryRoute: AuthenticatedHistoryRoute,
   AuthenticatedHomeRoute: AuthenticatedHomeRoute,
+  AuthenticatedProfileRoute: AuthenticatedProfileRoute,
+  AuthenticatedReferralsRoute: AuthenticatedReferralsRoute,
+  AuthenticatedServicesAirtimeRoute: AuthenticatedServicesAirtimeRoute,
+  AuthenticatedServicesBettingRoute: AuthenticatedServicesBettingRoute,
+  AuthenticatedServicesCableRoute: AuthenticatedServicesCableRoute,
+  AuthenticatedServicesDataRoute: AuthenticatedServicesDataRoute,
+  AuthenticatedServicesElectricityRoute: AuthenticatedServicesElectricityRoute,
+  AuthenticatedServicesExamPinRoute: AuthenticatedServicesExamPinRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =
@@ -171,3 +387,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
