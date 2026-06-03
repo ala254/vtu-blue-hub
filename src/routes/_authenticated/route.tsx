@@ -14,13 +14,13 @@ export const Route = createFileRoute("/_authenticated")({
 
 function AppShell() {
   const path = useRouterState({ select: (s) => s.location.pathname });
-  const tabs = [
+  const tabs: { to: string; label: string; icon: typeof Home; highlight?: boolean }[] = [
     { to: "/home", label: "Home", icon: Home },
     { to: "/history", label: "History", icon: History },
     { to: "/fund", label: "Fund", icon: Wallet, highlight: true },
     { to: "/referrals", label: "Referrals", icon: Users },
     { to: "/profile", label: "Profile", icon: User },
-  ] as const;
+  ];
 
   return (
     <div className="min-h-screen bg-background pb-24">
