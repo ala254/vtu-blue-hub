@@ -32,7 +32,7 @@ async function runService(opts: {
     status: "pending",
     reference,
     description: opts.description,
-    metadata: opts.metadata,
+    metadata: opts.metadata as any,
   });
   if (txErr) throw new Error(txErr.message);
 
@@ -57,7 +57,7 @@ async function runService(opts: {
       .from("transactions")
       .update({
         status: "successful",
-        metadata: { ...opts.metadata, provider_response: providerResp },
+        metadata: { ...opts.metadata, provider_response: providerResp } as any,
       })
       .eq("reference", reference);
 
