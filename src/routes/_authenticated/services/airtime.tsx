@@ -32,7 +32,8 @@ function Page() {
             <div className="grid grid-cols-4 gap-2">
               {NETWORKS.map((n) => (
                 <button type="button" key={n.id} onClick={() => setNetwork(n.id)}
-                  className={`rounded-xl border py-2 text-xs font-semibold ${network === n.id ? "border-primary bg-primary-soft text-primary" : "border-border bg-card"}`}>
+                  className={`flex flex-col items-center gap-1 rounded-xl border p-2 text-[11px] font-semibold transition ${network === n.id ? "border-primary bg-primary-soft text-primary ring-2 ring-primary/30" : "border-border bg-card"}`}>
+                  <img src={n.logo} alt={n.label} className="h-8 w-8 rounded-full object-cover" />
                   {n.label}
                 </button>
               ))}
