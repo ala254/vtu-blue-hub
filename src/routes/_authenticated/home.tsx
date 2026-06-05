@@ -5,6 +5,7 @@ import { getDashboard } from "@/lib/services.functions";
 import { formatNaira } from "@/lib/catalog";
 import { Bell, Wifi, Smartphone, Lightbulb, Tv, Trophy, GraduationCap, MoreHorizontal, Plus, ChevronRight } from "lucide-react";
 import { TxStatusBadge, typeLabel } from "@/components/tx-badge";
+import { BannerCarousel } from "@/components/banner-carousel";
 
 export const Route = createFileRoute("/_authenticated/home")({
   head: () => ({ meta: [{ title: "Home · Danjasub" }] }),
@@ -73,6 +74,8 @@ function HomePage() {
           ))}
         </div>
       </section>
+
+      <BannerCarousel />
 
       <section className="px-5 pt-6">
         <div className="mb-3 flex items-center justify-between">
