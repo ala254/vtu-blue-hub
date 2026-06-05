@@ -1,10 +1,14 @@
 // Static catalog of providers/plans. Safe for client.
+import mtnLogo from "@/assets/networks/mtn.asset.json";
+import gloLogo from "@/assets/networks/glo.asset.json";
+import airtelLogo from "@/assets/networks/airtel.asset.json";
+import nineMobileLogo from "@/assets/networks/9mobile.asset.json";
 
 export const NETWORKS = [
-  { id: "mtn", label: "MTN" },
-  { id: "glo", label: "Glo" },
-  { id: "airtel", label: "Airtel" },
-  { id: "9mobile", label: "9mobile" },
+  { id: "mtn", label: "MTN", logo: mtnLogo.url },
+  { id: "glo", label: "Glo", logo: gloLogo.url },
+  { id: "airtel", label: "Airtel", logo: airtelLogo.url },
+  { id: "9mobile", label: "9mobile", logo: nineMobileLogo.url },
 ] as const;
 
 export const DATA_PLANS: Record<string, { id: string; label: string; price: number }[]> = {
