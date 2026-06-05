@@ -1,6 +1,6 @@
 import { createFileRoute, Outlet, redirect, Link, useRouterState } from "@tanstack/react-router";
 import { supabase } from "@/integrations/supabase/client";
-import { Home, History, User, Users, Wallet } from "lucide-react";
+import { Home, History, User, Wallet } from "lucide-react";
 
 export const Route = createFileRoute("/_authenticated")({
   ssr: false,
@@ -17,8 +17,7 @@ function AppShell() {
   const tabs: { to: string; label: string; icon: typeof Home; highlight?: boolean }[] = [
     { to: "/home", label: "Home", icon: Home },
     { to: "/history", label: "History", icon: History },
-    { to: "/fund", label: "Fund", icon: Wallet, highlight: true },
-    { to: "/referrals", label: "Referrals", icon: Users },
+    { to: "/fund", label: "Wallet", icon: Wallet, highlight: true },
     { to: "/profile", label: "Profile", icon: User },
   ];
 
