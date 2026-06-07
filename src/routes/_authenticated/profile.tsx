@@ -43,7 +43,20 @@ function Page() {
           <Row icon={Phone} label="Phone" value={p?.phone ?? "—"} />
         </div>
 
-        <Link to="/about" className="mt-3 flex items-center justify-between rounded-2xl bg-card p-3 shadow-card">
+        <Link to="/settings" className="mt-3 flex items-center justify-between rounded-2xl bg-card p-3 shadow-card">
+          <div className="flex items-center gap-3">
+            <div className="grid h-10 w-10 place-items-center rounded-full bg-primary-soft text-primary">
+              <Settings className="h-4 w-4" />
+            </div>
+            <div>
+              <p className="text-[11px] text-muted-foreground">Preferences</p>
+              <p className="text-sm font-semibold">Settings & Security</p>
+            </div>
+          </div>
+          <ChevronRight className="h-4 w-4 text-muted-foreground" />
+        </Link>
+
+        <Link to="/about" className="mt-2 flex items-center justify-between rounded-2xl bg-card p-3 shadow-card">
           <div className="flex items-center gap-3">
             <div className="grid h-10 w-10 place-items-center rounded-full bg-primary-soft text-primary">
               <Info className="h-4 w-4" />
