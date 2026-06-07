@@ -1,6 +1,7 @@
 import { createFileRoute, Outlet, redirect, Link, useRouterState } from "@tanstack/react-router";
 import { supabase } from "@/integrations/supabase/client";
 import { Home, History, User, Wallet } from "lucide-react";
+import { DeveloperInfo } from "@/components/developer-info";
 
 export const Route = createFileRoute("/_authenticated")({
   ssr: false,
@@ -24,6 +25,7 @@ function AppShell() {
   return (
     <div className="min-h-screen bg-background pb-24">
       <Outlet />
+      <DeveloperInfo />
       <nav className="fixed inset-x-0 bottom-0 z-30 border-t border-border bg-card/95 backdrop-blur">
         <div className="mx-auto flex max-w-md items-end justify-between px-2 py-2">
           {tabs.map((t) => {
