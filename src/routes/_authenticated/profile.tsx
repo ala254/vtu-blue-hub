@@ -5,7 +5,7 @@ import { getDashboard } from "@/lib/services.functions";
 import { PageHeader } from "@/components/page-shell";
 import { DeveloperInfo } from "@/components/developer-info";
 import { supabase } from "@/integrations/supabase/client";
-import { Info, LogOut, Mail, Phone, User, ChevronRight } from "lucide-react";
+import { Info, LogOut, Mail, Phone, User, ChevronRight, Settings } from "lucide-react";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/_authenticated/profile")({
