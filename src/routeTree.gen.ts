@@ -13,6 +13,7 @@ import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedSettingsRouteImport } from './routes/_authenticated/settings'
 import { Route as AuthenticatedReferralsRouteImport } from './routes/_authenticated/referrals'
 import { Route as AuthenticatedProfileRouteImport } from './routes/_authenticated/profile'
 import { Route as AuthenticatedHomeRouteImport } from './routes/_authenticated/home'
@@ -46,6 +47,11 @@ const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedSettingsRoute = AuthenticatedSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedReferralsRoute = AuthenticatedReferralsRouteImport.update({
   id: '/referrals',
@@ -136,6 +142,7 @@ export interface FileRoutesByFullPath {
   '/home': typeof AuthenticatedHomeRoute
   '/profile': typeof AuthenticatedProfileRoute
   '/referrals': typeof AuthenticatedReferralsRoute
+  '/settings': typeof AuthenticatedSettingsRoute
   '/admin/banners': typeof AuthenticatedAdminBannersRoute
   '/services/airtime': typeof AuthenticatedServicesAirtimeRoute
   '/services/betting': typeof AuthenticatedServicesBettingRoute
@@ -155,6 +162,7 @@ export interface FileRoutesByTo {
   '/home': typeof AuthenticatedHomeRoute
   '/profile': typeof AuthenticatedProfileRoute
   '/referrals': typeof AuthenticatedReferralsRoute
+  '/settings': typeof AuthenticatedSettingsRoute
   '/admin/banners': typeof AuthenticatedAdminBannersRoute
   '/services/airtime': typeof AuthenticatedServicesAirtimeRoute
   '/services/betting': typeof AuthenticatedServicesBettingRoute
@@ -176,6 +184,7 @@ export interface FileRoutesById {
   '/_authenticated/home': typeof AuthenticatedHomeRoute
   '/_authenticated/profile': typeof AuthenticatedProfileRoute
   '/_authenticated/referrals': typeof AuthenticatedReferralsRoute
+  '/_authenticated/settings': typeof AuthenticatedSettingsRoute
   '/_authenticated/admin/banners': typeof AuthenticatedAdminBannersRoute
   '/_authenticated/services/airtime': typeof AuthenticatedServicesAirtimeRoute
   '/_authenticated/services/betting': typeof AuthenticatedServicesBettingRoute
@@ -197,6 +206,7 @@ export interface FileRouteTypes {
     | '/home'
     | '/profile'
     | '/referrals'
+    | '/settings'
     | '/admin/banners'
     | '/services/airtime'
     | '/services/betting'
@@ -216,6 +226,7 @@ export interface FileRouteTypes {
     | '/home'
     | '/profile'
     | '/referrals'
+    | '/settings'
     | '/admin/banners'
     | '/services/airtime'
     | '/services/betting'
@@ -236,6 +247,7 @@ export interface FileRouteTypes {
     | '/_authenticated/home'
     | '/_authenticated/profile'
     | '/_authenticated/referrals'
+    | '/_authenticated/settings'
     | '/_authenticated/admin/banners'
     | '/_authenticated/services/airtime'
     | '/_authenticated/services/betting'
@@ -283,6 +295,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/settings': {
+      id: '/_authenticated/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof AuthenticatedSettingsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/referrals': {
       id: '/_authenticated/referrals'
@@ -392,6 +411,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedHomeRoute: typeof AuthenticatedHomeRoute
   AuthenticatedProfileRoute: typeof AuthenticatedProfileRoute
   AuthenticatedReferralsRoute: typeof AuthenticatedReferralsRoute
+  AuthenticatedSettingsRoute: typeof AuthenticatedSettingsRoute
   AuthenticatedAdminBannersRoute: typeof AuthenticatedAdminBannersRoute
   AuthenticatedServicesAirtimeRoute: typeof AuthenticatedServicesAirtimeRoute
   AuthenticatedServicesBettingRoute: typeof AuthenticatedServicesBettingRoute
@@ -408,6 +428,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedHomeRoute: AuthenticatedHomeRoute,
   AuthenticatedProfileRoute: AuthenticatedProfileRoute,
   AuthenticatedReferralsRoute: AuthenticatedReferralsRoute,
+  AuthenticatedSettingsRoute: AuthenticatedSettingsRoute,
   AuthenticatedAdminBannersRoute: AuthenticatedAdminBannersRoute,
   AuthenticatedServicesAirtimeRoute: AuthenticatedServicesAirtimeRoute,
   AuthenticatedServicesBettingRoute: AuthenticatedServicesBettingRoute,
